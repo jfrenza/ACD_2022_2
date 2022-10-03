@@ -80,7 +80,7 @@ pass = 1;
 while (n > lmn1)&(pass <= nmxpass)&(flg == 1),
 
   en = ones(n,1);
-  
+
   Vv = kur_nwm(x(:,1:p),ndk);
 
   ndir = ndir + ndr;
@@ -94,12 +94,12 @@ while (n > lmn1)&(pass <= nmxpass)&(flg == 1),
   tctf = en*vctf;
   taux = tt./tctf;
   t = max(taux')';
-  
+
 %%% Exit if no observations were labelled as outliers
 
   in = find(t > 1);
   nn = length(in);
-    
+
   if nn == 0,
     flg = 0;
     break
