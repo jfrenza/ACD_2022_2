@@ -7,3 +7,17 @@
 # Realice lo mismo estimando la matriz de covarianza utilizando el shrinkage de Ledoit and Wolf.
 # Compare los resultados. Haga un análisis gráfico y de visualización donde se
 # observe si al final el shrinkage mejora el número condición.
+
+
+import numpy as np
+from scipy.linalg import hilbert
+
+H = hilbert(2)
+
+mean = [0, 3]
+
+cov = [[1, 2], [2, 3]]
+
+datos = np.random.multivariate_normal(mean, cov, size = (10,2))
+
+print(datos)

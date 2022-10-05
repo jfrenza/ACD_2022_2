@@ -6,7 +6,7 @@
 # luego la covarianza bajo el shrinkage de Ledoit and Wolf (cov1para.m)
 # y la covarianza y vector de medias robustas obtenida bajo el método de
 # mínima curtosis (Kurmain.m). Ilustre ejemplos concretos donde el shrinkage y el método
-# robusto presenta un mejor tendimiento y comente los resultados.
+# robusto presenta un mejor rendimiento y comente los resultados.
 
 import numpy as np
 

@@ -8,7 +8,16 @@ import pandas as pd
 
 df = pd.read_excel('Portfolio.xlsx')
 
-matrix = df.to_numpy()
+#matrix = df.to_numpy()
+
+matrix = np.array([
+[40, 20, 15],
+[35, 500, 10],
+[45, 200, 20],
+[60, 200, 10],
+[90, 150, 45]])
+
+
 
 CovM = np.cov(matrix)
 SizeCov = CovM.shape[1]
