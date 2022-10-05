@@ -11,17 +11,23 @@
 
 import numpy as np
 from scipy.linalg import hilbert
-
-n = 1000
-
-H = hilbert(n)
-mean = np.zeros(n)
-datos = np.random.multivariate_normal(mean, cov = H, size = (n))
-
-print(datos)
-
 import matplotlib.pyplot as plt
-plt.plot(datos[:, 0], datos[:, 1], '.', alpha=0.5)
-plt.axis('equal')
-plt.grid()
-plt.show()
+
+
+data = []
+
+for n in range(2,102):
+    size = 1000
+    Hilbert = hilbert(n)
+    mean = np.zeros(n)
+    datos = np.random.multivariate_normal(mean, cov = Hilbert, size = (size))
+    CovariazaEstimada = np.cov(datos)
+    CondicionMatriz =  np.linalg.cond(CovariazaEstimada)
+    data.append(CondicionMatriz)
+
+#plt.plot(range(98), data)
+#plt.show()
+
+
+a = range(2,102)
+print(len(a))
