@@ -27,7 +27,3 @@ for n in range(2,102):
 
 plt.plot(range(98), data)
 plt.show()
-
-
-a = range(2,102)
-print(len(a))
