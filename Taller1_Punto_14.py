@@ -24,6 +24,3 @@ for n in range(2,102):
     CovariazaEstimada = np.cov(datos)
     CondicionMatriz =  np.linalg.cond(CovariazaEstimada)
     data.append(CondicionMatriz)
-
-plt.plot(range(98), data)
-plt.show()
