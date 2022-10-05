@@ -12,12 +12,16 @@
 import numpy as np
 from scipy.linalg import hilbert
 
-H = hilbert(2)
+n = 1000
 
-mean = [0, 3]
-
-cov = [[1, 2], [2, 3]]
-
-datos = np.random.multivariate_normal(mean, cov, size = (10,2))
+H = hilbert(n)
+mean = np.zeros(n)
+datos = np.random.multivariate_normal(mean, cov = H, size = (n))
 
 print(datos)
+
+import matplotlib.pyplot as plt
+plt.plot(datos[:, 0], datos[:, 1], '.', alpha=0.5)
+plt.axis('equal')
+plt.grid()
+plt.show()

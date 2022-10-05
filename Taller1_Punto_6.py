@@ -32,6 +32,4 @@ def MahalDistance(data, x):
     MD = np.sqrt(temp2)
     return np.reshape(MD, -1)
 
-print(MahalDistance(data, x))
-
 # Distancia de Malahanobis utilizando Shinkage de Ledoit Wolf
