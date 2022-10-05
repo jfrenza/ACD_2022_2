@@ -25,8 +25,8 @@ for n in range(2,102):
     CondicionMatriz =  np.linalg.cond(CovariazaEstimada)
     data.append(CondicionMatriz)
 
-#plt.plot(range(98), data)
-#plt.show()
+plt.plot(range(98), data)
+plt.show()
 
 
 a = range(2,102)
