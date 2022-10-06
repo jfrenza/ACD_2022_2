@@ -12,9 +12,14 @@
 import numpy as np
 from scipy.linalg import hilbert
 import matplotlib.pyplot as plt
+from sklearn.covariance import LedoitWolf
 
 
-data = []
+# Simulación utilizando la matriz de covarianza tradicional
+
+Condicion = []
+Determinante = []
+
 Size = 1000
 for n in range(2,102):
     Hilbert = hilbert(n)
@@ -22,6 +27,37 @@ for n in range(2,102):
     datos = np.random.multivariate_normal(mean, cov = Hilbert, size = (Size))
     CovariazaEstimada = np.cov(datos)
     CondicionMatriz =  np.linalg.cond(CovariazaEstimada)
-    data.append(CondicionMatriz)
-plt.plot(range(100), data)
+    detMatriz =  np.linalg.det(CovariazaEstimada)
+    Condicion.append(CondicionMatriz)
+    Determinante.append(detMatriz)
+
+
+fig, (ax1, ax2) = plt.subplots(2)
+fig.suptitle('N Vs Número de Condición & N Vs Determinante')
+ax1.plot(range(100), Condicion)
+ax2.plot(range(100), Determinante)
+plt.show()
+
+# Simulación utilizando la matriz de covarianza bajo el Shrinkage de Ledoit and Wolf
+
+Condicion2 = []
+Determinante2 = []
+
+N = 1000
+for n in range(2,102):
+    Hilbert2 = hilbert(n)
+    media = np.zeros(n)
+    simulacion = np.random.multivariate_normal(media, cov = Hilbert2, size = N)
+    cov = LedoitWolf().fit(simulacion)
+    CovM = cov.covariance_
+    CondicionMatriz2 =  np.linalg.cond(CovM)
+    detMatriz2 =  np.linalg.det(CovM)
+    Condicion2.append(CondicionMatriz2)
+    Determinante2.append(detMatriz2)
+
+
+fig, (ax3, ax4) = plt.subplots(2)
+fig.suptitle('N Vs Número de Condición & N Vs Determinante (Ledoit & Wolf)')
+ax3.plot(range(100), Condicion2)
+ax4.plot(range(100), Determinante2)
 plt.show()
