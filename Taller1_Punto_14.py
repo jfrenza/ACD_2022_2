@@ -15,12 +15,13 @@ import matplotlib.pyplot as plt
 
 
 data = []
-
+Size = 1000
 for n in range(2,102):
-    size = 1000
     Hilbert = hilbert(n)
     mean = np.zeros(n)
-    datos = np.random.multivariate_normal(mean, cov = Hilbert, size = (size))
+    datos = np.random.multivariate_normal(mean, cov = Hilbert, size = (Size))
     CovariazaEstimada = np.cov(datos)
     CondicionMatriz =  np.linalg.cond(CovariazaEstimada)
     data.append(CondicionMatriz)
+plt.plot(range(100), data)
+plt.show()

@@ -9,6 +9,8 @@
 # robusto presenta un mejor rendimiento y comente los resultados.
 
 import numpy as np
+from sklearn.covariance import LedoitWolf
+
 
 data = np.array([
 [40, 20, 15],
@@ -33,3 +35,18 @@ def MahalDistance(data, x):
     return np.reshape(MD, -1)
 
 # Distancia de Malahanobis utilizando Shinkage de Ledoit Wolf
+
+def MahalLedotWolf(data, x):
+    m = np.mean(data, axis = 0)
+    cov = LedoitWolf().fit(data)
+    CovLedoitWolf = cov.covariance_
+    InvCov = np.linalg.inv(CovLedoitWolf)
+    temp1 = np.dot((x - m), InvCov)
+    temp2 = np.dot(temp1, np.transpose(x - m))
+    MD = np.sqrt(temp2)
+    return np.reshape(MD, -1)
+
+# Distancia de Mahalanobis utilizando el método de mínima Kurtosis
+
+print(MahalDistance(data, x))
+print(MahalLedotWolf(data, x))
