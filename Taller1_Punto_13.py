@@ -6,7 +6,7 @@
 import numpy as np
 import pandas as pd
 
-# Se importan la librerías necesias para el código
+# Se importan la librerías necesarias para el código
 
 df = pd.read_excel('Portfolio.xlsx') # Se hace uso de la librería pandas .read_excel() para cargar el dataset
 
